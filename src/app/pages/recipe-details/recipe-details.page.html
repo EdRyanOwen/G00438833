@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Recipe Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="recipe" class="recipe-details">
+    
+    <img [src]="recipe.image" [alt]="recipe.title" class="recipe-image" />
+    
+    <h1 class="recipe-title">{{ recipe.title }}</h1>
+    
+    <ion-card>
+      <ion-card-content>
+        <h2>Ingredients</h2>
+        <div *ngFor="let ingredient of recipe.extendedIngredients" class="ingredient-item">
+          <img [src]="'https://spoonacular.com/cdn/ingredients_100x100/' + ingredient.image" 
+               [alt]="ingredient.name"
+               class="ingredient-image" />
+          <div class="ingredient-info">
+            <p class="ingredient-name">{{ ingredient.original }}</p>
+            <p class="ingredient-amount">{{ getIngredientAmount(ingredient) }}</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    
+    <ion-card>
+      <ion-card-content>
+        <h2>Instructions</h2>
+        <div *ngIf="recipe.analyzedInstructions && recipe.analyzedInstructions.length > 0">
+          <div *ngFor="let instruction of recipe.analyzedInstructions[0].steps" class="instruction-step">
+            <span class="step-number">{{ instruction.number }}</span>
+            <span class="step-text">{{ instruction.step }}</span>
+          </div>
+        </div>
+        <p *ngIf="!recipe.analyzedInstructions || recipe.analyzedInstructions.length === 0">
+          No instructions available.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  
+    <ion-button 
+      expand="block" 
+      (click)="toggleFavourite()"
+      [color]="isFavourite ? 'danger' : 'primary'"
+      class="favourite-button">
+      {{ isFavourite ? 'REMOVE FROM FAVOURITES' : 'ADD TO FAVOURITES' }}
+    </ion-button>
+    
+  </div>
+</ion-content>
