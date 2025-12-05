@@ -1,0 +1,23 @@
+.settings-container {
+  padding: 20px;
+
+  h2 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  ion-list {
+    background: transparent;
+
+    ion-item {
+      --background: #f8f8f8;
+      margin-bottom: 10px;
+      border-radius: 8px;
+
+      ion-label {
+        font-size: 1.1em;
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+.favourites-container {
+  padding: 10px;
+
+  .loading-message,
+  .empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+
+    p {
+      margin: 10px 0;
+      font-size: 1.1em;
+    }
+  }
+
+  .recipes-container {
+    .recipe-card {
+      margin-bottom: 15px;
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      ion-card-title {
+        font-size: 1.1em;
+        font-weight: bold;
+      }
+
+      ion-button {
+        --background: #3880ff;
+        margin-top: 10px;
+      }
+    }
+  }
+}

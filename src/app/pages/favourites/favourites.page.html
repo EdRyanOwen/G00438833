@@ -1,0 +1,37 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Favourites Recipes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="favourites-container">
+    
+    <div *ngIf="isLoading" class="loading-message">
+      <p>Loading favourites...</p>
+    </div>
+
+    <div *ngIf="!isLoading && favouriteRecipes.length === 0" class="empty-message">
+      <p>No favourite recipes yet.</p>
+      <p>Add recipes to your favourites from the recipe details page!</p>
+    </div>
+
+    <div *ngIf="!isLoading && favouriteRecipes.length > 0" class="recipes-container">
+      <ion-card *ngFor="let recipe of favouriteRecipes" class="recipe-card">
+        <img [src]="recipe.image" [alt]="recipe.title" />
+        <ion-card-header>
+          <ion-card-title>{{ recipe.title }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-button expand="block" (click)="viewRecipeDetails(recipe.id)">
+            DETAILS
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+  </div>
+</ion-content>
