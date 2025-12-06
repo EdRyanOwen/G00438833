@@ -9,6 +9,7 @@
 
 <ion-content [fullscreen]="true">
   <div class="settings-container">
+    
     <h2>Display Recipe Measurements In:</h2>
     
     <ion-list>
@@ -24,5 +25,15 @@
         </ion-item>
       </ion-radio-group>
     </ion-list>
+
+    <h2>Appearance</h2>
+    
+    <ion-list>
+      <ion-item>
+        <ion-label>Dark Mode</ion-label>
+        <ion-toggle [(ngModel)]="darkMode" (ionChange)="onDarkModeToggle()" slot="end"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
   </div>
 </ion-content>
